@@ -1,0 +1,98 @@
+{
+    "": {
+        "id": 0,
+        "color": "",
+        "province": "Out of bounds",
+        "capital": "Out of bounds"
+    },
+    "#c7de79": {
+        "id": 1,
+        "color": "#c7de79",
+        "province": "Noord-Brabant",
+        "capital": "'s-Hertogenbosch"
+    },
+    "#d1c6dd": {
+        "id": 2,
+        "color": "#d1c6dd",
+        "province": "Zeeland",
+        "capital": "Middelburg"
+    },
+    "#dd8473": {
+        "id": 3,
+        "color": "#dd8473",
+        "province": "Zuid-Holland",
+        "capital": "'s-Gravenhage"
+    },
+    "#fcf799": {
+        "id": 4,
+        "color": "#fcf799",
+        "province": "Noord-Holland",
+        "capital": "Haarlem"
+    },
+    "#f8e7fe": {
+        "id": 5,
+        "color": "#f8e7fe",
+        "province": "Utrecht",
+        "capital": "Utrecht"
+    },
+    "#a29c85": {
+        "id": 6,
+        "color": "#a29c85",
+        "province": "Flevoland",
+        "capital": "Lelystad"
+    },
+    "#d0e7c7": {
+        "id": 7,
+        "color": "#d0e7c7",
+        "province": "Friesland",
+        "capital": "Leeuwarden"
+    },
+    "#cbc5fc": {
+        "id": 8,
+        "color": "#cbc5fc",
+        "province": "Groningen",
+        "capital": "Groningen"
+    },
+    "#ddffff": {
+        "id": 9,
+        "color": "#ddffff",
+        "province": "Drenthe",
+        "capital": "Assen"
+    },
+    "#d8adc5": {
+        "id": 10,
+        "color": "#d8adc5",
+        "province": "Overijssel",
+        "capital": "Zwolle"
+    },
+    "#e3a528": {
+        "id": 11,
+        "color": "#e3a528",
+        "province": "Gelderland",
+        "capital": "Arnhem"
+    },
+    "#aed6be": {
+        "id": 12,
+        "color": "#aed6be",
+        "province": "Limburg",
+        "capital": "Maastricht"
+    },
+    "#a1defd": {
+        "id": 13,
+        "color": "#a1defd",
+        "province": "Lakes",
+        "capital": "None"
+    },
+    "#c6ecff": {
+        "id": 14,
+        "color": "#c6ecff",
+        "province": "Sea",
+        "capital": "None"
+    },
+    "#e0e0e0": {
+        "id": 15,
+        "color": "#e0e0e0",
+        "province": "Land",
+        "capital": "Foreign"
+    }
+}
