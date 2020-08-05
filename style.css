@@ -1,0 +1,17 @@
+* {
+    margin: 0;
+    font-family: sans-serif;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+}
+
+canvas {
+    margin: 8px;
+    border: 2px solid black;
+    float: left;
+    image-rendering: pixelated;
+    min-height: 80%;
+}
