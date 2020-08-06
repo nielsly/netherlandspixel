@@ -85,21 +85,34 @@ function getColorUnderCursor(x, y) {
 }
 
 function setCanvasSize() {
-    if (6 * window.document.documentElement.clientWidth > 5 * window.document.documentElement.clientHeight) {
-        cv.style.height = window.document.documentElement.clientHeight - ((cv.style.marginTop.slice(0, -2) | 0) + (cv.style.borderWidth.slice(0, -2) | 0) * 2 + (cv.style.marginBottom.slice(0, -2) | 0)) + "px";
-        cv.style.width = "auto";
+    const cvExtraH = (cv.style.marginLeft.slice(0, -2) | 0) + (cv.style.borderWidth.slice(0, -2) | 0) * 2 + (cv.style.marginRight.slice(0, -2) | 0),
+        infoCardExtra = (infoCard.div.style.marginLeft.slice(0, -2) | 0) + (infoCard.div.style.paddingLeft.slice(0, -2) | 0) + (infoCard.div.style.borderWidth.slice(0, -2) | 0) * 2 + (infoCard.div.style.paddingRight.slice(0, -2) | 0) + (infoCard.div.style.marginRight.slice(0, -2) | 0);
+
+    if (6 * document.documentElement.clientWidth > 5 * document.documentElement.clientHeight) {
+        cv.style.height = document.documentElement.clientHeight - ((cv.style.marginTop.slice(0, -2) | 0) + (cv.style.borderWidth.slice(0, -2) | 0) * 2 + (cv.style.marginBottom.slice(0, -2) | 0)) + "px";
+        cv.style.width = ((cv.style.height.slice(0, -2) | 0) / 6 * 5 | 0) + "px";
     } else {
-        cv.style.width = window.document.documentElement.clientWidth - ((cv.style.marginLeft.slice(0, -2) | 0) + (cv.style.borderWidth.slice(0, -2) | 0) * 2 + (cv.style.marginRight.slice(0, -2) | 0)) + "px";
+        cv.style.width = document.documentElement.clientWidth - cvExtraH + "px";
         cv.style.height = "auto";
     }
-}
 
-window.onresize = setCanvasSize;
+    const cvWidth = (cv.style.width.slice(0, -2) | 0) + cvExtraH;
+
+    if (document.documentElement.clientWidth - cvWidth >= 160 + infoCardExtra) {
+        infoCard.div.style.width = document.documentElement.clientWidth - cvWidth - infoCardExtra + "px"
+    } else {
+        infoCard.div.style.width = document.documentElement.clientWidth - infoCardExtra + "px";
+    }
+}
 
 async function bodyReady() {
     provinces = await fetch('provinces.json').then((r) => {
         return r.json();
     });
+
+    document.body.style.width = "100vw";
+    document.body.style.height = "100vh";
+
     await createCanvas();
     imageDataData = cx.getImageData(0, 0, cv.width, cv.height).data;
 
@@ -127,7 +140,15 @@ async function bodyReady() {
             infoCard.div.appendChild(infoCard[el]);
         }
     }
+
+    infoCard.div.style.border = "2px solid black";
+    infoCard.div.style.margin = "8px";
+    infoCard.div.style.padding = "8px";
+
     document.body.appendChild(infoCard.div);
+
+    setCanvasSize();
+    window.onresize = setCanvasSize;
 }
 
 async function createCanvas() {
@@ -143,7 +164,6 @@ async function createCanvas() {
 
     cx.drawImage(img, 0, 0, 50, 60);
     document.body.appendChild(cv);
-    setCanvasSize();
 }
 
 function loadImage(url) {
