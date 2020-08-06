@@ -86,10 +86,10 @@ function getColorUnderCursor(x, y) {
 
 function setCanvasSize() {
     if (6 * window.document.documentElement.clientWidth > 5 * window.document.documentElement.clientHeight) {
-        cv.style.height = window.document.documentElement.clientHeight - ((cv.style.marginTop.substring(0, cv.style.marginTop.length - 2) | 0) + (cv.style.borderWidth.substring(0, cv.style.borderWidth.length - 2) | 0) * 2 + (cv.style.marginBottom.substring(0, cv.style.marginBottom.length - 2) | 0)) + "px";
+        cv.style.height = window.document.documentElement.clientHeight - ((cv.style.marginTop.slice(0, -2) | 0) + (cv.style.borderWidth.slice(0, -2) | 0) * 2 + (cv.style.marginBottom.slice(0, -2) | 0)) + "px";
         cv.style.width = "auto";
     } else {
-        cv.style.width = window.document.documentElement.clientWidth - ((cv.style.marginLeft.substring(0, cv.style.marginLeft.length - 2) | 0) + (cv.style.borderWidth.substring(0, cv.style.borderWidth.length - 2) | 0) * 2 + (cv.style.marginRight.substring(0, cv.style.marginRight.length - 2) | 0)) + "px";
+        cv.style.width = window.document.documentElement.clientWidth - ((cv.style.marginLeft.slice(0, -2) | 0) + (cv.style.borderWidth.slice(0, -2) | 0) * 2 + (cv.style.marginRight.slice(0, -2) | 0)) + "px";
         cv.style.height = "auto";
     }
 }
