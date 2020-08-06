@@ -1,4 +1,5 @@
 //amsterdam x21y26
+// x | 0 is shorthand to convert x to an integer
 
 const mouse = {
     x: 0,
@@ -23,10 +24,7 @@ function mouseEvents(e) {
     const color = getColorUnderCursor(x, y);
     if (mouse.button && color !== "" && color !== mouse.lastColor) {
         mouse.lastColor = color;
-        console.log(color);
-
         setProvinceInfo(provinces[color]);
-
     }
 }
 
@@ -86,6 +84,18 @@ function getColorUnderCursor(x, y) {
     return "";
 }
 
+function setCanvasSize() {
+    if (6 * window.document.documentElement.clientWidth > 5 * window.document.documentElement.clientHeight) {
+        cv.style.height = window.document.documentElement.clientHeight - ((cv.style.marginTop.substring(0, cv.style.marginTop.length - 2) | 0) + (cv.style.borderWidth.substring(0, cv.style.borderWidth.length - 2) | 0) * 2 + (cv.style.marginBottom.substring(0, cv.style.marginBottom.length - 2) | 0)) + "px";
+        cv.style.width = "auto";
+    } else {
+        cv.style.width = window.document.documentElement.clientWidth - ((cv.style.marginLeft.substring(0, cv.style.marginLeft.length - 2) | 0) + (cv.style.borderWidth.substring(0, cv.style.borderWidth.length - 2) | 0) * 2 + (cv.style.marginRight.substring(0, cv.style.marginRight.length - 2) | 0)) + "px";
+        cv.style.height = "auto";
+    }
+}
+
+window.onresize = setCanvasSize;
+
 async function bodyReady() {
     provinces = await fetch('provinces.json').then((r) => {
         return r.json();
@@ -126,11 +136,14 @@ async function createCanvas() {
     cv.width = '50';
     cv.height = '60';
     cx = cv.getContext('2d');
+    cv.style.border = "2px solid black";
+    cv.style.margin = "8px"
 
     const img = await loadImage('./netherlandspixel.png');
 
     cx.drawImage(img, 0, 0, 50, 60);
     document.body.appendChild(cv);
+    setCanvasSize();
 }
 
 function loadImage(url) {

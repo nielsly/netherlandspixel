@@ -13,14 +13,17 @@ canvas {
     border: 2px solid black;
     float: left;
     image-rendering: pixelated;
-    min-height: 80%;
 }
 
 #infoCard {
-    border: 2px solid black;
     float: left;
     margin: 8px;
     padding: 8px;
-    min-width: 10%;
-    max-width: 80%;
+    width: 200px;
+    max-width: 90%;
+    overflow-wrap: break-word;
+}
+
+#infoCard h2 {
+    text-align: center;
 }
